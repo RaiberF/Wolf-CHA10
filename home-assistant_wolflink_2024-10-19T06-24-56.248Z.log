@@ -1,0 +1,117 @@
+2024-10-18 22:37:19.577 INFO (SyncWorker_0) [fritzconnection] Unable to retrieve resource 'http://192.168.178.29:49000/igddesc.xml' from the device.
+2024-10-18 22:37:19.579 INFO (SyncWorker_2) [fritzconnection] Unable to retrieve resource 'http://192.168.178.51:49000/igddesc.xml' from the device.
+2024-10-18 22:43:37.142 WARNING (MainThread) [homeassistant.util.loop] Detected blocking call to load_verify_locations with args (<ssl.SSLContext object at 0x7f9b8f2f50>,) inside the event loop by integration 'wolflink' at homeassistant/components/wolflink/config_flow.py, line 42: wolf_client = WolfClient( (offender: /usr/local/lib/python3.12/site-packages/httpx/_config.py, line 149: context.load_verify_locations(cafile=cafile)), please create a bug report at https://github.com/home-assistant/core/issues?q=is%3Aopen+is%3Aissue+label%3A%22integration%3A+wolflink%22
+For developers, please see https://developers.home-assistant.io/docs/asyncio_blocking_operations/#load_verify_locations
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/usr/src/homeassistant/homeassistant/__main__.py", line 223, in <module>
+    sys.exit(main())
+  File "/usr/src/homeassistant/homeassistant/__main__.py", line 209, in main
+    exit_code = runner.run(runtime_conf)
+  File "/usr/src/homeassistant/homeassistant/runner.py", line 189, in run
+    return loop.run_until_complete(setup_and_run_hass(runtime_config))
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 1990, in _run_once
+    handle._run()
+  File "/usr/local/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 556, in start
+    task = asyncio.Task(coro, loop=loop, eager_start=True)
+  File "/usr/local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 477, in _handle_request
+    resp = await request_handler(request)
+  File "/usr/local/lib/python3.12/site-packages/aiohttp/web_app.py", line 559, in _handle
+    return await handler(request)
+  File "/usr/local/lib/python3.12/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 85, in ban_middleware
+    return await handler(request)
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 32, in headers_middleware
+    response = await handler(request)
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+  File "/usr/src/homeassistant/homeassistant/components/http/decorators.py", line 81, in with_admin
+    return await func(self, request, *args, **kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/config/config_entries.py", line 222, in post
+    return await super().post(request, flow_id)
+  File "/usr/src/homeassistant/homeassistant/components/http/data_validator.py", line 74, in wrapper
+    return await method(view, request, data, *args, **kwargs)
+  File "/usr/src/homeassistant/homeassistant/helpers/data_entry_flow.py", line 122, in post
+    result = await self._flow_mgr.async_configure(flow_id, data)
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 370, in async_configure
+    result = await self._async_configure(flow_id, user_input)
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 417, in _async_configure
+    result = await self._async_handle_step(
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 520, in _async_handle_step
+    result: _FlowResultT = await getattr(flow, method)(user_input)
+  File "/usr/src/homeassistant/homeassistant/components/wolflink/config_flow.py", line 42, in async_step_user
+    wolf_client = WolfClient(
+
+2024-10-18 23:00:29.910 ERROR (MainThread) [homeassistant.components.ipp.coordinator] Error fetching ipp data: Invalid response from API: Timeout occurred while connecting to IPP server.
+2024-10-18 23:00:54.680 WARNING (MainThread) [homeassistant.components.denonavr.media_player] Network error connecting to Denon AVR receiver at host 192.168.178.46. Device is unavailable
+2024-10-19 00:08:04.120 ERROR (MainThread) [homeassistant.components.synology_dsm.coordinator] Error fetching NASSynDS414 SynologyDSMCentralUpdateCoordinator data: Error communicating with API: {'api': None, 'code': -1, 'reason': 'Unknown', 'details': "ClientConnectorError = ConnectionKey(host='192.168.178.12', port=5001, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=-2656961427637375085)"}
+2024-10-19 06:00:24.732 WARNING (MainThread) [homeassistant.components.denonavr.media_player] Denon AVR receiver at host 192.168.178.46 is available again
+2024-10-19 08:05:31.914 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:05:31.935 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:05:31.976 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.141 seconds (success: True)
+2024-10-19 08:06:31.924 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:06:31.969 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.134 seconds (success: True)
+2024-10-19 08:07:31.916 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:07:31.955 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:07:31.993 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.158 seconds (success: True)
+2024-10-19 08:08:31.929 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:08:31.949 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:08:32.095 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.261 seconds (success: True)
+2024-10-19 08:09:31.912 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:09:31.963 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.128 seconds (success: True)
+2024-10-19 08:10:31.897 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:10:31.935 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:10:31.970 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.136 seconds (success: True)
+2024-10-19 08:11:31.935 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:11:31.955 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:11:31.994 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.159 seconds (success: True)
+2024-10-19 08:12:31.915 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:12:31.972 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.137 seconds (success: True)
+2024-10-19 08:13:31.896 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:13:31.948 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:13:31.996 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.162 seconds (success: True)
+2024-10-19 08:14:31.918 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:14:31.939 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:14:31.988 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.154 seconds (success: True)
+2024-10-19 08:15:31.932 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:15:31.981 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.146 seconds (success: True)
+2024-10-19 08:16:31.908 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:16:31.944 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:16:31.989 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.155 seconds (success: True)
+2024-10-19 08:17:31.911 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:17:31.931 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:17:31.981 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.147 seconds (success: True)
+2024-10-19 08:18:31.917 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:18:31.974 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.140 seconds (success: True)
+2024-10-19 08:19:31.897 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:19:31.935 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:19:31.982 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.147 seconds (success: True)
+2024-10-19 08:20:31.934 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:20:31.955 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:20:32.006 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.171 seconds (success: True)
+2024-10-19 08:21:31.919 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:21:31.968 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.133 seconds (success: True)
+2024-10-19 08:22:31.898 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:22:31.934 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:22:31.976 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.142 seconds (success: True)
+2024-10-19 08:23:31.923 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:23:31.944 DEBUG (MainThread) [wolf_comm.wolf_client] Sessionid: 116918017 extented
+2024-10-19 08:23:32.000 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.165 seconds (success: True)
+2024-10-19 08:24:31.912 DEBUG (MainThread) [wolf_comm.wolf_client] Fetched system state: [{'SystemId': 53977, 'GatewayState': {'GatewayId': 38590, 'IsOnline': True, 'GatewayOfflineCause': 0, 'IsLocked': False, 'IsDeleted': False, 'IsBusy': False, 'ImageName': 'cha.jpg'}, 'AccessLevel': 4, 'IsSystemShareDeleted': False, 'IsSystemShareRejected': False, 'IsSystemDeleted': False}]
+2024-10-19 08:24:31.977 DEBUG (MainThread) [homeassistant.components.wolflink] Finished fetching wolflink data in 0.142 seconds (success: True)
